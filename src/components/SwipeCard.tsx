@@ -1,3 +1,4 @@
+import ListingCardFace from "@/components/ListingCardFace";
 import type { Listing } from "@/lib/types";
 
 export default function SwipeCard({
@@ -14,61 +15,41 @@ export default function SwipeCard({
   busy?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-      <div className="aspect-[4/3] w-full bg-gray-100">
-        {listing.photo_url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={listing.photo_url}
-            alt={listing.address}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-gray-400">
-            No photo yet
-          </div>
-        )}
-      </div>
+    <div>
+      <ListingCardFace listing={listing} />
 
-      <div className="p-5">
-        <div className="flex items-baseline justify-between gap-2">
-          <h2 className="text-xl font-bold text-gray-900">
-            ${listing.price.toLocaleString()}
-          </h2>
-          <span className="text-sm text-gray-500">{listing.region}</span>
-        </div>
-        <p className="mt-1 text-gray-700">{listing.address}</p>
-        <p className="mt-1 text-sm text-gray-500">
-          {listing.bedrooms} bed · {listing.bathrooms} bath
-        </p>
-        {listing.description && (
-          <p className="mt-3 text-sm text-gray-600">{listing.description}</p>
-        )}
-      </div>
-
-      <div className="grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-200">
+      <div className="mt-4 flex items-center justify-center gap-4">
         <button
           disabled={busy}
           onClick={onNotInterested}
-          className="py-3 text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+          aria-label="Not interested"
+          title="Not interested"
+          className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white text-xl text-coral shadow-[0_8px_16px_-6px_rgba(11,29,58,0.25)] hover:scale-105 disabled:opacity-50"
         >
-          Not interested
+          ✕
         </button>
         <button
           disabled={busy}
           onClick={onWatchlist}
-          className="py-3 text-sm font-medium text-amber-600 hover:bg-amber-50 disabled:opacity-50"
+          aria-label="Watchlist"
+          title="Watchlist"
+          className="flex h-11 w-11 items-center justify-center self-center rounded-full bg-white text-base text-sand shadow-[0_8px_16px_-6px_rgba(11,29,58,0.25)] hover:scale-105 disabled:opacity-50"
         >
-          Watchlist
+          ☆
         </button>
         <button
           disabled={busy}
           onClick={onContact}
-          className="py-3 text-sm font-medium text-rose-600 hover:bg-rose-50 disabled:opacity-50"
+          aria-label="Contact me"
+          title="Contact me"
+          className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-mint text-xl text-white shadow-[0_8px_16px_-6px_rgba(11,29,58,0.25)] hover:scale-105 disabled:opacity-50"
         >
-          Contact me
+          ♥
         </button>
       </div>
+      <p className="mt-2.5 text-center text-[11px] font-bold text-ink/45">
+        Not interested · Watchlist · Contact me
+      </p>
     </div>
   );
 }

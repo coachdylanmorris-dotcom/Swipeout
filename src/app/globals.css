@@ -1,13 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;
-  --foreground: #171717;
+  --background: #eaf2ff;
+  --foreground: #0b1d3a;
+
+  /* Swipeout brand palette */
+  --ink: #0b1d3a;
+  --blue: #2f6fed;
+  --blue-deep: #1a4fcb;
+  --sky: #eaf2ff;
+  --mint: #12c7a6;
+  --coral: #ff6b7a;
+  --sand: #ffc857;
+  --line: rgba(11, 29, 58, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-ink: var(--ink);
+  --color-blue: var(--blue);
+  --color-blue-deep: var(--blue-deep);
+  --color-sky: var(--sky);
+  --color-mint: var(--mint);
+  --color-coral: var(--coral);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+
+  --font-display: var(--font-baloo), ui-rounded, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {

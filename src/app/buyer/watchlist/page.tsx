@@ -64,15 +64,15 @@ function WatchlistView() {
     setRows((current) => (current ?? []).filter((r) => r.swipeId !== row.swipeId));
   }
 
-  if (error) return <p className="p-8 text-center text-red-600">{error}</p>;
-  if (rows === null) return <p className="p-8 text-center text-gray-500">Loading…</p>;
+  if (error) return <p className="p-8 text-center font-semibold text-coral">{error}</p>;
+  if (rows === null) return <p className="p-8 text-center text-ink/50">Loading…</p>;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-4 text-lg font-semibold text-gray-900">Your watchlist</h1>
+      <h1 className="mb-5 font-display text-xl font-extrabold text-ink">Your watchlist</h1>
 
       {rows.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
+        <div className="rounded-3xl border border-line bg-white p-10 text-center text-ink/50">
           Nothing saved yet. Swipe &quot;Watchlist&quot; on a listing to keep it here.
         </div>
       ) : (
@@ -80,9 +80,9 @@ function WatchlistView() {
           {rows.map((row) => (
             <div
               key={row.swipeId}
-              className="flex gap-4 overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
+              className="flex gap-4 overflow-hidden rounded-2xl border border-line bg-white p-4 shadow-[0_10px_24px_-18px_rgba(11,29,58,0.4)]"
             >
-              <div className="h-24 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+              <div className="h-24 w-32 flex-shrink-0 overflow-hidden rounded-xl bg-sky">
                 {row.listing.photo_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -91,7 +91,7 @@ function WatchlistView() {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-xs text-gray-400">
+                  <div className="flex h-full items-center justify-center text-xs text-ink/40">
                     No photo
                   </div>
                 )}
@@ -99,28 +99,28 @@ function WatchlistView() {
 
               <div className="flex-1">
                 <div className="flex items-baseline justify-between gap-2">
-                  <h2 className="font-bold text-gray-900">
+                  <h2 className="font-display font-extrabold text-ink">
                     ${row.listing.price.toLocaleString()}
                   </h2>
-                  <span className="text-xs text-gray-500">{row.listing.region}</span>
+                  <span className="text-xs font-semibold text-ink/50">{row.listing.region}</span>
                 </div>
-                <p className="text-sm text-gray-700">{row.listing.address}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-sm font-semibold text-ink/80">{row.listing.address}</p>
+                <p className="text-xs font-semibold text-ink/50">
                   {row.listing.bedrooms} bed · {row.listing.bathrooms} bath
                 </p>
 
-                <div className="mt-2 flex gap-2">
+                <div className="mt-2.5 flex gap-2">
                   <button
                     disabled={busyId === row.swipeId}
                     onClick={() => updateAction(row, "contact")}
-                    className="rounded-full bg-rose-600 px-3 py-1 text-xs font-medium text-white hover:bg-rose-700 disabled:opacity-50"
+                    className="rounded-full bg-mint px-3.5 py-1.5 text-xs font-bold text-white hover:opacity-90 disabled:opacity-50"
                   >
                     Contact me
                   </button>
                   <button
                     disabled={busyId === row.swipeId}
                     onClick={() => updateAction(row, "not_interested")}
-                    className="rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                    className="rounded-full border border-line px-3.5 py-1.5 text-xs font-bold text-ink/60 hover:bg-sky disabled:opacity-50"
                   >
                     Remove
                   </button>

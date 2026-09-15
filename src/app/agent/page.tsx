@@ -52,23 +52,23 @@ function AgentDashboard() {
     };
   }, [user, router]);
 
-  if (error) return <p className="p-8 text-center text-red-600">{error}</p>;
-  if (listings === null) return <p className="p-8 text-center text-gray-500">Loading…</p>;
+  if (error) return <p className="p-8 text-center font-semibold text-coral">{error}</p>;
+  if (listings === null) return <p className="p-8 text-center text-ink/50">Loading…</p>;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold text-gray-900">Your listings</h1>
+        <h1 className="font-display text-xl font-extrabold text-ink">Your listings</h1>
         <Link
           href="/agent/listings/new"
-          className="rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
+          className="rounded-full bg-ink px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-deep"
         >
           + Add listing
         </Link>
       </div>
 
       {listings.length === 0 ? (
-        <div className="mt-6 rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
+        <div className="mt-6 rounded-3xl border border-line bg-white p-10 text-center text-ink/50">
           You haven&apos;t added any listings yet.
         </div>
       ) : (
@@ -76,9 +76,9 @@ function AgentDashboard() {
           {listings.map((listing) => (
             <div
               key={listing.id}
-              className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+              className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_10px_24px_-18px_rgba(11,29,58,0.4)]"
             >
-              <div className="aspect-[4/3] w-full bg-gray-100">
+              <div className="aspect-[4/3] w-full bg-sky">
                 {listing.photo_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -87,20 +87,20 @@ function AgentDashboard() {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center text-gray-400">
+                  <div className="flex h-full items-center justify-center text-ink/40">
                     No photo
                   </div>
                 )}
               </div>
               <div className="p-4">
                 <div className="flex items-baseline justify-between gap-2">
-                  <h2 className="font-bold text-gray-900">
+                  <h2 className="font-display font-extrabold text-ink">
                     ${listing.price.toLocaleString()}
                   </h2>
-                  <span className="text-xs text-gray-500">{listing.region}</span>
+                  <span className="text-xs font-semibold text-ink/50">{listing.region}</span>
                 </div>
-                <p className="text-sm text-gray-700">{listing.address}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-sm font-semibold text-ink/80">{listing.address}</p>
+                <p className="text-xs font-semibold text-ink/50">
                   {listing.bedrooms} bed · {listing.bathrooms} bath
                 </p>
               </div>

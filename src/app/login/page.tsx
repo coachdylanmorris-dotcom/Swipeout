@@ -45,11 +45,11 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-12">
-      <h1 className="text-2xl font-bold text-gray-900">Log in</h1>
+      <h1 className="font-display text-2xl font-extrabold text-ink">Log in</h1>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="mb-1.5 block text-[12.5px] font-extrabold uppercase tracking-wide text-ink/50">
             Email
           </label>
           <input
@@ -57,12 +57,12 @@ export default function LoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2"
+            className="w-full rounded-xl border border-line bg-sky px-3.5 py-2.5 font-semibold text-ink outline-none focus:border-blue"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="mb-1.5 block text-[12.5px] font-extrabold uppercase tracking-wide text-ink/50">
             Password
           </label>
           <input
@@ -70,24 +70,24 @@ export default function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2"
+            className="w-full rounded-xl border border-line bg-sky px-3.5 py-2.5 font-semibold text-ink outline-none focus:border-blue"
           />
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm font-semibold text-coral">{error}</p>}
 
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-rose-600 px-4 py-2.5 font-medium text-white hover:bg-rose-700 disabled:opacity-50"
+          className="w-full rounded-full bg-blue px-4 py-3 font-bold text-white shadow-[0_14px_24px_-10px_rgba(47,111,237,0.55)] hover:bg-blue-deep disabled:opacity-50"
         >
           {submitting ? "Logging in…" : "Log in"}
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-gray-500">
+      <p className="mt-6 text-center text-sm font-semibold text-ink/50">
         No account yet?{" "}
-        <Link href="/signup" className="font-medium text-rose-600 hover:underline">
+        <Link href="/signup" className="font-bold text-blue hover:underline">
           Sign up
         </Link>
       </p>

@@ -34,30 +34,35 @@ function AgentOnboardingForm() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-12">
-      <h1 className="text-2xl font-bold text-gray-900">A little about your agency</h1>
-      <p className="mt-1 text-sm text-gray-600">
+      <span className="mb-1.5 block text-[13px] font-extrabold uppercase tracking-wide text-mint">
+        Agent profile
+      </span>
+      <h1 className="font-display text-2xl font-extrabold text-ink">
+        A little about your agency
+      </h1>
+      <p className="mt-1 text-sm text-ink/60">
         Buyers will see this alongside your listings.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="mb-1.5 block text-[12.5px] font-extrabold uppercase tracking-wide text-ink/50">
             Agency name
           </label>
           <input
             required
             value={agencyName}
             onChange={(e) => setAgencyName(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2"
+            className="w-full rounded-xl border border-line bg-sky px-3.5 py-2.5 font-semibold text-ink outline-none focus:border-mint"
           />
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {error && <p className="text-sm font-semibold text-coral">{error}</p>}
 
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-gray-900 px-4 py-2.5 font-medium text-white hover:bg-gray-800 disabled:opacity-50"
+          className="w-full rounded-full bg-ink px-4 py-3 font-bold text-white hover:bg-blue-deep disabled:opacity-50"
         >
           {submitting ? "Saving…" : "Continue"}
         </button>

@@ -97,18 +97,18 @@ function LeadsView() {
     };
   }, [user]);
 
-  if (error) return <p className="p-8 text-center text-red-600">{error}</p>;
-  if (leads === null) return <p className="p-8 text-center text-gray-500">Loading…</p>;
+  if (error) return <p className="p-8 text-center font-semibold text-coral">{error}</p>;
+  if (leads === null) return <p className="p-8 text-center text-ink/50">Loading…</p>;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-1 text-lg font-semibold text-gray-900">Leads</h1>
-      <p className="mb-6 text-sm text-gray-600">
+      <h1 className="mb-1 font-display text-xl font-extrabold text-ink">Leads</h1>
+      <p className="mb-6 text-sm text-ink/60">
         Buyers who hit &quot;Contact me&quot; on one of your listings.
       </p>
 
       {leads.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
+        <div className="rounded-3xl border border-line bg-white p-10 text-center text-ink/50">
           No leads yet. They&apos;ll show up here as soon as a buyer contacts you.
         </div>
       ) : (
@@ -116,42 +116,59 @@ function LeadsView() {
           {leads.map((lead) => (
             <div
               key={lead.swipeId}
-              className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
+              className="rounded-2xl border border-line bg-white p-4 shadow-[0_10px_24px_-18px_rgba(11,29,58,0.4)]"
             >
-              <div className="flex items-baseline justify-between gap-2">
-                <h2 className="font-semibold text-gray-900">
-                  {lead.buyer.full_name ?? "A buyer"}
-                </h2>
-                <span className="text-xs text-gray-400">
-                  {new Date(lead.createdAt).toLocaleString()}
-                </span>
-              </div>
-              <p className="text-sm text-gray-600">
-                Interested in {lead.listing.address} ({lead.listing.region})
-              </p>
+              <div className="flex items-start gap-3.5">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue text-sm font-extrabold text-white">
+                  {(lead.buyer.full_name ?? "?").charAt(0).toUpperCase()}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h2 className="font-bold text-ink">
+                      {lead.buyer.full_name ?? "A buyer"}
+                    </h2>
+                    <span className="flex-shrink-0 text-xs font-semibold text-ink/40">
+                      {new Date(lead.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="text-sm text-ink/60">
+                    Interested in {lead.listing.address} ({lead.listing.region})
+                  </p>
 
-              {lead.buyerProfile && (
-                <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-700">
-                  <div>
-                    <dt className="text-xs text-gray-400">Budget</dt>
-                    <dd>
-                      {lead.buyerProfile.budget_min || lead.buyerProfile.budget_max
-                        ? `$${(lead.buyerProfile.budget_min ?? 0).toLocaleString()} – $${(
-                            lead.buyerProfile.budget_max ?? 0
-                          ).toLocaleString()}`
-                        : "Not specified"}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs text-gray-400">Preferred region</dt>
-                    <dd>{lead.buyerProfile.preferred_location ?? "Not specified"}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs text-gray-400">Pre-approved</dt>
-                    <dd>{lead.buyerProfile.pre_approved ? "Yes" : "No"}</dd>
-                  </div>
-                </dl>
-              )}
+                  {lead.buyerProfile && (
+                    <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 rounded-xl bg-sky p-3 text-sm text-ink/80">
+                      <div>
+                        <dt className="text-[11px] font-bold uppercase tracking-wide text-ink/40">
+                          Budget
+                        </dt>
+                        <dd className="font-semibold">
+                          {lead.buyerProfile.budget_min || lead.buyerProfile.budget_max
+                            ? `$${(lead.buyerProfile.budget_min ?? 0).toLocaleString()} – $${(
+                                lead.buyerProfile.budget_max ?? 0
+                              ).toLocaleString()}`
+                            : "Not specified"}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-[11px] font-bold uppercase tracking-wide text-ink/40">
+                          Preferred region
+                        </dt>
+                        <dd className="font-semibold">
+                          {lead.buyerProfile.preferred_location ?? "Not specified"}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-[11px] font-bold uppercase tracking-wide text-ink/40">
+                          Pre-approved
+                        </dt>
+                        <dd className="font-semibold">
+                          {lead.buyerProfile.pre_approved ? "Yes" : "No"}
+                        </dd>
+                      </div>
+                    </dl>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>

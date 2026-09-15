@@ -78,22 +78,25 @@ function BuyerSwipeDeck() {
   }
 
   if (error) {
-    return <p className="p-8 text-center text-red-600">{error}</p>;
+    return <p className="p-8 text-center font-semibold text-coral">{error}</p>;
   }
 
   if (queue === null) {
-    return <p className="p-8 text-center text-gray-500">Loading listings…</p>;
+    return <p className="p-8 text-center text-ink/50">Loading listings…</p>;
   }
 
   return (
     <div className="mx-auto max-w-sm px-4 py-8">
-      <h1 className="mb-4 text-center text-lg font-semibold text-gray-900">
+      <h1 className="mb-5 text-center font-display text-xl font-extrabold text-ink">
         New listings for you
       </h1>
 
       {queue.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500">
-          You&apos;ve seen every listing. Check back soon for more.
+        <div className="rounded-3xl border border-line bg-white p-10 text-center text-ink/50">
+          <div className="mb-2 text-3xl">🏁</div>
+          You&apos;ve seen every listing.
+          <br />
+          Check back soon for more.
         </div>
       ) : (
         <SwipeCard
@@ -106,7 +109,7 @@ function BuyerSwipeDeck() {
       )}
 
       {queue.length > 0 && (
-        <p className="mt-4 text-center text-xs text-gray-400">
+        <p className="mt-4 text-center text-xs font-bold text-ink/40">
           {queue.length} listing{queue.length === 1 ? "" : "s"} left
         </p>
       )}

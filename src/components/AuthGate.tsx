@@ -30,7 +30,7 @@ export default function AuthGate({
   }, [loading, user, profile, role, router]);
 
   if (loading || !user) {
-    return <p className="p-8 text-center text-gray-500">Loading…</p>;
+    return <p className="p-8 text-center text-ink/50">Loading…</p>;
   }
   if (role && profile && profile.role !== role) {
     return null;
